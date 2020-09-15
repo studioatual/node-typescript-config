@@ -6,10 +6,16 @@
   "scripts": {
     "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --ignore-watch node_modules --no-notify src/server.ts",
     "build": "tsc",
-    "test": "jest"
+    "test": "jest --passWithNoTests --silent --noStackTrace",
+    "test:unit": "npm jest -- --watch -c jest-unit-config.js",
+    "test:integration": "npm jest -- --watch -c jest-integration-config.js",
+    "test:staged": "npm test -- --findRelatedTests",
+    "test:ci": "npm test -- --coverage"
   },
   "devDependencies": {
     "@types/express": "^4.17.8",
+    "@types/jest": "^26.0.13",
+    "@types/node": "^14.10.1",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",
     "eslint": "^7.9.0",
@@ -18,12 +24,13 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
+    "git-commit-msg-linter": "^2.6.0",
+    "husky": "^4.3.0",
     "jest": "^26.4.2",
+    "lint-staged": "^10.3.0",
+    "ts-jest": "^26.3.0",
     "ts-node-dev": "^1.0.0-pre.62",
     "tsconfig-paths": "^3.9.0",
     "typescript": "^4.0.2"
-  },
-  "dependencies": {
-    "express": "^4.17.1"
   }
 }
